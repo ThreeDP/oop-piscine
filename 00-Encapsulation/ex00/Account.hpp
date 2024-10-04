@@ -15,9 +15,6 @@ class Account {
         Account() : _id(-1), _value(0) {}
 };
 
-std::ostream& operator << (std::ostream &os, const Account& account) {
-    os << "[ " << account.GetAccountNumber() << " ]: " << account.GetAccountValue() << std::endl; 
-    return (os);
-}
+std::ostream& operator << (std::ostream &os, const Account& account);
 
 #endif

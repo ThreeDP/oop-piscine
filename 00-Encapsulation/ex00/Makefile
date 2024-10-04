@@ -5,8 +5,8 @@ OBJS_PATH					:= obj/
 GTEST_PATH					:= gtest/
 
 ## PROJECT FILES
-HEADERS						:= Account.hpp
-SRCS						:= main.cpp Account.cpp
+HEADERS						:= Account.hpp Bank.hpp
+SRCS						:= main.cpp Account.cpp Bank.cpp
 OBJ							:= $(patsubst %.cpp, $(OBJS_PATH)%.o, $(SRCS))
 
 ## COLOR VARIABLES
@@ -47,6 +47,9 @@ bt: $(GTEST_PATH)
 	cmake --build $<
 
 rt:
+	@			cd $(GTEST_PATH) && ctest --verbose
+
+rte:
 	@			cd $(GTEST_PATH) && ctest --rerun-failed --output-on-failure --verbose --interactive-debug-mode
 
 .PHONY: re all fclean clean

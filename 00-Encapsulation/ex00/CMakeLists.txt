@@ -13,11 +13,13 @@ set(INCLUDE_DIR
 
 set(HEADERS
     Account.hpp
+    Bank.hpp
 )
 
 # Source files
 set(SOURCE_FILES
     Account.cpp
+    Bank.cpp
 )
 
 add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
@@ -39,11 +41,16 @@ find_package(GTest REQUIRED)
 include(GoogleTest)
 
 set(AccountSrc Tests/AccountTests.cpp)
+set(BankSrc Tests/BankTests.cpp)
 
-# Adicionar executáveis dos testes
 add_executable(
 	AccountTest
 	${AccountSrc}
+)
+
+add_executable(
+	BankTest
+	${BankSrc}
 )
 
 target_link_libraries(
@@ -52,4 +59,12 @@ target_link_libraries(
     GTest::gtest_main
 )
 
+
+target_link_libraries(
+	BankTest
+	${Name}
+    GTest::gtest_main
+)
+
 gtest_discover_tests(AccountTest)
+gtest_discover_tests(BankTest)
